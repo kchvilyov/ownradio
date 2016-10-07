@@ -1,6 +1,7 @@
 package kz.tanat.service;
 
 import kz.tanat.domain.Track;
+import kz.tanat.repository.PgTrackRepository;
 import kz.tanat.repository.TrackRepository;
 import kz.tanat.util.ResourceFile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,11 @@ public class TrackService {
     private final TrackRepository trackRepository;
 
     @Autowired
-    public TrackService(TrackRepository trackRepository) {
+    /**
+     * PgTrackRepository can be used for Postgre SQL only!
+     * TODO: Use spesified for current database repository type as type of trackRepository parameter!
+     */
+    public TrackService(PgTrackRepository trackRepository) {
         this.trackRepository = trackRepository;
     }
 
